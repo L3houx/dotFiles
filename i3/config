@@ -190,11 +190,22 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # Applications
 assign [class="Firefox"] $workspace1
-assign [class="Code"] $workspace2
-assign [class="jetbrains-idea-ce"] $workspace2
+assign [class="konsole"] $workspace2
+assign [class="Code"] $workspace3
+assign [class="jetbrains-idea-ce"] $workspace3
 assign [class="Slack"] $workspace9
 for_window [class="Spotify"] move to workspace $workspace10
 for_window [class="spotify"] move to workspace $workspace10
 
 # Default to tabbed layout
 workspace_layout tabbed
+
+#Enable Tap To Click
+exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
+exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled Default" 1
+
+
+#Set Screen resolution to 1920 x 1080
+exec --no-startup-id xrandr --output eDP-1 --mode 1920x1080 
+
+exec --no-startup-id nm-applet
