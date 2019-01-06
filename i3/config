@@ -209,3 +209,6 @@ exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapp
 exec --no-startup-id xrandr --output eDP-1 --mode 1920x1080 
 
 exec --no-startup-id nm-applet
+
+#Add battery notification (low level)
+exec --no-startup-id ../i3-battery-popup/i3-battery-popup
