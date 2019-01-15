@@ -1,15 +1,15 @@
 #!/bin/bash
 
-#You can select only one Notification (the one you prefer) or you 
-#can use both. If you don't have theses packages, you will need to
-#install them: acpi, notify-send, zenity
+ #You can select only one Notification (the one you prefer) or you
+ #can use both. If you don't have theses packages, you will need to
+ #install them: acpi, notify-send, zenity
 
 BATTINFO=`acpi -b`
-if [[ `echo "$BATTINFO" | grep Discharging | cut$
+if [[ `echo "$BATTINFO" | grep Discharging | cut -f 4 -d " " | cut -f 1 -d "%"` -lt 15 ]];
 then
     #Small notification on Right Corner of the Screen
     eval "notify-send 'Low battery' '$BATTINFO'"
-    
+
     #Warning popup in the middle of the screen
-    eval "zenity --warning --text='$BATTINFO' --$
+    eval "zenity --warning --text='$BATTINFO' --ellippsize"
 fi
