@@ -5,11 +5,12 @@
  #install them: acpi, notify-send, zenity
 
 BATTINFO=`acpi -b`
-if [[ `echo "$BATTINFO" | grep Discharging | cut -f 4 -d " " | cut -f 1 -d "%"` -lt 15 ]];
+ #if [[ `echo "$BATTINFO" | grep Discharging && echo "$BATTINFO" | grep Discharging | cut -f 4 -d " " | cut -f 1 -d "%"` -lt 15 ]];
+if [[ `acpi -b | grep Discharging && acpi -b | grep Discharging | cut -f 4 -d " " | cut -f 1 -d "%"` -lt 15 ]];
 then
     #Small notification on Right Corner of the Screen
     eval "notify-send 'Low battery' '$BATTINFO'"
 
     #Warning popup in the middle of the screen
-    eval "zenity --warning --text='$BATTINFO' --ellippsize"
+    eval "zenity --warning --text='$BATTINFO' --ellipsize"
 fi
