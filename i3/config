@@ -100,7 +100,7 @@ set $workspace4 "4: Debugger"
 set $workspace5 "5"
 set $workspace6 "6"
 set $workspace7 "7"
-set $workspace8 "8"
+set $workspace8 "8: Bitwarden"
 set $workspace9 "9: Slack"
 set $workspace10 "10: Spotify"
 
@@ -165,6 +165,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
+	tray_output primary
 }
 
 # Custom shortcuts
@@ -193,6 +194,9 @@ assign [class="Firefox"] $workspace1
 assign [class="konsole"] $workspace2
 assign [class="Code"] $workspace3
 assign [class="jetbrains-idea-ce"] $workspace3
+for_window [class="bitwarden"] move to workspace $workspace8
+for_window [class="Bitwarden"] move to workspace $workspace8
+assign [class="Keybase"] $workspace9
 assign [class="Slack"] $workspace9
 for_window [class="Spotify"] move to workspace $workspace10
 for_window [class="spotify"] move to workspace $workspace10
@@ -206,9 +210,16 @@ exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapp
 
 
 #Set Screen resolution to 1920 x 1080
-exec --no-startup-id xrandr --output eDP-1 --mode 1920x1080 
+exec --no-startup-id xrandr --output eDP-1 --mode 1920x1080 --primary
+
+#Set Others screen
+exec --no-startup-id xrandr --output DP-1-8 --mode 1920x1080 --right-of DP-1-1 
+exec --no-startup-id xrandr --output DP-1-1 --mode 1920x1080 --left-of DP-1-8
 
 exec --no-startup-id nm-applet
 
 #Add battery notification (low level)
 exec --no-startup-id ../i3-battery-popup/i3-battery-popup
+
+#Start dunst to fix Slack's notification freezing
+exec --no-startup-id dunst
