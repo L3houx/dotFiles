@@ -159,6 +159,7 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
+#Resize the selected window
 bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -172,16 +173,19 @@ bar {
 bindsym $mod+shift+x exec i3lock-fancy
 
 # Background
-exec --no-startup-id feh --bg-scale ~/Desktop/Setup-linux/wallpaper.jpg
+exec --no-startup-id feh --bg-scale ~/Desktop/Setup-Linux/wallpaper.jpg
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse set Master 5%+ #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse set Master 5%- #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
-# Sreen brightness controls
-bindsym XF86MonBrightnessUp exec ~/backlight.py +0.1 # increase screen brightness
-bindsym XF86MonBrightnessDown exec ~/backlight.py -0.1 # decrease screen brightness
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+bindsym fn5 python ~/.config/i3-brightness/brightness.py -
+bindsym fn6 python ~/.config/i3-brightness/brightness.py +
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
@@ -223,3 +227,6 @@ exec --no-startup-id ../i3-battery-popup/i3-battery-popup
 
 #Start dunst to fix Slack's notification freezing
 exec --no-startup-id dunst
+
+#Start flameshot gui applet
+exec --no-stratup-id flameshot gui
