@@ -128,6 +128,12 @@ bindsym $mod+Shift+8 move container to workspace $workspace8
 bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
+# move focused workspace between monitors
+bindsym $mod+Ctrl+Up move workspace  move to output up
+bindsym $mod+Ctrl+Down move workspace move to output down
+bindsym $mod+Ctrl+Left move workspace move to output left
+bindsym $mod+Ctrl+Right move workspace move to output right
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -169,7 +175,7 @@ bar {
 }
 
 # Custom shortcuts
-bindsym $mod+shift+x exec i3lock
+bindsym $mod+shift+x exec i3lock-fancy
 
 # Background
 exec --no-startup-id xsetroot -solid "#000000"
@@ -223,3 +229,6 @@ exec --no-startup-id ../i3-battery-popup/i3-battery-popup
 
 #Start dunst to fix Slack's notification freezing
 exec --no-startup-id dunst
+
+#Disable touchscreen
+exec --no-startup-id xinput disable 11
