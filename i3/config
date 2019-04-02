@@ -165,6 +165,7 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
+#Resize the selected window
 bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -178,16 +179,19 @@ bar {
 bindsym $mod+shift+x exec i3lock-fancy
 
 # Background
-exec --no-startup-id xsetroot -solid "#000000"
+exec --no-startup-id feh --bg-scale ~/Desktop/Setup-Linux/wallpaper.jpg
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse set Master 5%+ #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse set Master 5%- #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
-# Sreen brightness controls
-bindsym XF86MonBrightnessUp exec ~/backlight.py +0.1 # increase screen brightness
-bindsym XF86MonBrightnessDown exec ~/backlight.py -0.1 # decrease screen brightness
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+bindsym fn5 python ~/.config/i3-brightness/brightness.py -
+bindsym fn6 python ~/.config/i3-brightness/brightness.py +
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
@@ -197,7 +201,7 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # Applications
 assign [class="Firefox"] $workspace1
-assign [class="konsole"] $workspace2
+assign [class="terminal"] $workspace2
 assign [class="Code"] $workspace3
 assign [class="jetbrains-idea-ce"] $workspace3
 for_window [class="bitwarden"] move to workspace $workspace8
@@ -219,7 +223,7 @@ exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapp
 exec --no-startup-id xrandr --output eDP-1 --mode 1920x1080 --primary
 
 #Set Others screen
-exec --no-startup-id xrandr --output DP-1-8 --mode 1920x1080 --right-of DP-1-1 
+exec --no-startup-id xrandr --output DP-1-8 --mode 1920x1080 --right-of DP-1-1
 exec --no-startup-id xrandr --output DP-1-1 --mode 1920x1080 --left-of DP-1-8
 
 exec --no-startup-id nm-applet
@@ -232,3 +236,5 @@ exec --no-startup-id dunst
 
 #Disable touchscreen
 exec --no-startup-id xinput disable 11
+#Start flameshot gui applet
+exec --no-stratup-id flameshot gui
