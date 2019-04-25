@@ -36,20 +36,14 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-#bindsym $mod+d exec dmenu_run
+# bindsym $mod+d exec dmenu_run
 bindsym $mod+d exec rofi -show run -no-fullscreen
+
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
-
-# alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
@@ -131,8 +125,10 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
@@ -163,8 +159,7 @@ mode "resize" {
 #Resize the selected window
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+# Start i3bar to display a workspace bar (plus the system information i3status finds out, if available)
 bar {
         status_command i3status
 	tray_output primary
@@ -182,11 +177,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse set Master 5%-
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
-
-bindsym fn5 python ~/.config/i3-brightness/brightness.py -
-bindsym fn6 python ~/.config/i3-brightness/brightness.py +
+bindsym XF86MonBrightnessUp exec python ~/.config/i3-brightness/brightness.py +
+bindsym XF86MonBrightnessDown exec python ~/.config/i3-brightness/brightness.py -
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
@@ -209,25 +201,21 @@ for_window [class="spotify"] move to workspace $workspace10
 # Default to tabbed layout
 workspace_layout tabbed
 
-#Enable Tap To Click
+# Enable Tap To Click
 exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
 exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled Default" 1
 
-
-#Set Screen resolution to 1920 x 1080
+# Set Screen resolution to 1920 x 1080
 exec --no-startup-id xrandr --output eDP-1 --mode 1920x1080 --primary
 
-#Set Others screen
-exec --no-startup-id xrandr --output DP-1-8 --mode 1920x1080 --right-of DP-1-1 
-exec --no-startup-id xrandr --output DP-1-1 --mode 1920x1080 --left-of DP-1-8
-
+# Network Manager applet
 exec --no-startup-id nm-applet
 
-#Add battery notification (low level)
+# Add battery notification (low level)
 exec --no-startup-id ../i3-battery-popup/i3-battery-popup
 
-#Start dunst to fix Slack's notification freezing
+# Start dunst to fix Slack's notification freezing
 exec --no-startup-id dunst
 
-#Start flameshot gui applet
-exec --no-stratup-id flameshot gui
+# Start flameshot gui applet
+exec --no-stratup-id flameshot
