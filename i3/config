@@ -168,9 +168,6 @@ bar {
 # Custom shortcuts
 bindsym $mod+shift+x exec i3lock-fancy
 
-# Background
-exec --no-startup-id feh --bg-scale ~/Desktop/Setup-Linux/wallpaper.jpg
-
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse set Master 5%+ #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse set Master 5%- #decrease sound volume
@@ -187,16 +184,15 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Applications
-assign [class="Firefox"] $workspace1
-assign [class="terminal"] $workspace2
-assign [class="Code"] $workspace3
-assign [class="jetbrains-idea-ce"] $workspace3
-for_window [class="bitwarden"] move to workspace $workspace8
-for_window [class="Bitwarden"] move to workspace $workspace8
-assign [class="Keybase"] $workspace9
-assign [class="Slack"] $workspace9
-for_window [class="Spotify"] move to workspace $workspace10
-for_window [class="spotify"] move to workspace $workspace10
+for_window [class="Firefox"] move to workspace $workspace1 border pixel 2
+for_window [class="terminal"] move to workspace $workspace2 border pixel 2
+for_window [class="Code"] move to workspace $workspace3 border pixel 2
+for_window [class="bitwarden"] move to workspace $workspace8 border pixel 2
+for_window [class="Bitwarden"] move to workspace $workspace8 border pixel 2
+for_window [class="Keybase"] move to workspace $workspace9 border pixel 2
+for_window [class="Slack"] move to workspace $workspace9 border pixel 2
+for_window [class="Spotify"] move to workspace $workspace10 border pixel 2
+for_window [class="spotify"] move to workspace $workspace10 border pixel 2
 
 # Default to tabbed layout
 workspace_layout tabbed
@@ -214,8 +210,16 @@ exec --no-startup-id nm-applet
 # Add battery notification (low level)
 exec --no-startup-id ../i3-battery-popup/i3-battery-popup
 
+# Background
+exec --no-startup-id feh --bg-scale ~/Desktop/Setup-Linux/wallpaper.jpg
+
 # Start dunst to fix Slack's notification freezing
 exec --no-startup-id dunst
 
 # Start flameshot gui applet
 exec --no-stratup-id flameshot
+
+#I3-Gaps
+gaps inner 5
+gaps outer 5
+

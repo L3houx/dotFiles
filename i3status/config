@@ -54,7 +54,7 @@ volume master {
 }
 
 battery all {
-	last_full_capacity = true
+	last_full_capacity = false
         format = "<span color='#ffffff'>   %status %percentage %remaining </span>"
         format_down = "No Battery"
         status_chr = "Charging"
@@ -62,9 +62,8 @@ battery all {
         status_unk = "Unknown"
         status_full = "Charged"
         path = "/sys/class/power_supply/BAT%d/uevent"
-        low_threshold = 60
+        low_threshold = 30
 	threshold_type = time
-	integer_battery_capacity = true
 }
 
 tztime local {
