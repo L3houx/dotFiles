@@ -1,8 +1,14 @@
 #!/bin/bash
 
+export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1001/bus"
+
 BATTINFO=`acpi -b`
-if [[ `echo "$BATTINFO" | grep Discharging | cut -f 4 -d " " | cut -f 1 -d "%"` -lt 15 ]];
+CONDITION=`acpi -b | grep Discharging | cut -f 4 -d " " | cut -f 1 -d "%"`
+
+echo "$CONDITION"
+
+if [ ! -z "$CONDITION" ] && [ $CONDITION -lt 15 ];
 then
-    eval "notify-send 'Low battery' '$BATTINFO'"
-    eval "zenity --warning --text='$BATTINFO' --ellipsize"
+    eval "/usr/bin/notify-send 'Low battery' '$BATTINFO'"
+    eval "/usr/bin/zenity --warning --text='$BATTINFO' --ellipsize"
 fi
