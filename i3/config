@@ -225,4 +225,4 @@ gaps inner 5
 gaps outer 5
 
 # Compton
-exec --no-startup-id compton
+exec --no-startup-id killall -q compton; compton --config ~/.config/compton/compton.conf
