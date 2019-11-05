@@ -171,7 +171,7 @@ bindsym $mod+shift+x exec i3lock-fancy
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse set Master 5%+ #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse set Master 5%- #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound not working well
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec python ~/.config/i3-brightness/brightness.py +
@@ -205,14 +205,14 @@ exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapp
 exec --no-startup-id xrandr --output eDP-1 --mode 1920x1080 --primary
 
 # Network Manager applet
-# exec --no-startup-id nm-applet
+#exec --no-startup-id nm-applet
 exec --no-startup-id wicd-client
 
 # Add battery notification (low level)
 exec --no-startup-id ../i3-battery-popup/i3-battery-popup
 
 # Background
-exec --no-startup-id feh --bg-scale ~/Desktop/Setup-Linux/wallpaper.jpg
+exec --no-startup-id feh --bg-scale ~/Desktop/Setup-Linux/avatar.jpg
 
 # Start dunst to fix Slack's notification freezing
 exec --no-startup-id dunst
