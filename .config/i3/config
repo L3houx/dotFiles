@@ -212,7 +212,7 @@ exec --no-startup-id wicd-client
 exec --no-startup-id ../i3-battery-popup/i3-battery-popup
 
 # Background
-exec --no-startup-id feh --bg-scale ~/Desktop/Setup-Linux/avatar.jpg
+exec --no-startup-id feh --bg-scale ~/Desktop/Setup-Linux/mind.jpg
 
 # Start dunst to fix Slack's notification freezing
 exec --no-startup-id dunst
