@@ -3,7 +3,7 @@
 export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1001/bus"
 
 BATTINFO=`acpi -b`
-CONDITION=`acpi -b | grep Discharging | cut -f 4 -d " " | cut -f 1 -d "%"`
+CONDITION=`acpi -b | grep "Battery 0"|grep Discharging | cut -f 4 -d " " | cut -f 1 -d "%"`
 
 echo "$CONDITION"
 
