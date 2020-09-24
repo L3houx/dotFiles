@@ -7,7 +7,7 @@ CONDITION=`acpi -b | grep "Battery 0"|grep Discharging | cut -f 4 -d " " | cut -
 
 echo "$CONDITION"
 
-if [ ! -z "$CONDITION" ] && [ $CONDITION -lt 15 ];
+if [ ! -z "$CONDITION" ] && [ $CONDITION -lt 15 ] && [ $CONDITION != 0 ];
 then
     eval "/usr/bin/notify-send 'Low battery' '$BATTINFO'"
     eval "/usr/bin/zenity --warning --text='$BATTINFO' --ellipsize"
