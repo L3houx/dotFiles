@@ -7,6 +7,9 @@ CONDITION=`acpi -b | grep "Battery 0"|grep Discharging | cut -f 4 -d " " | cut -
 
 echo "$CONDITION"
 
+# If it didn't work, maybe It need to add the variable Display accessible for all users by writing into this file /ect/sudoers.d/99-snapd.conf this line:
+# Defaults    env_keep += "DISPLAY"
+
 if [ ! -z "$CONDITION" ] && [ $CONDITION -lt 15 ] && [ $CONDITION != 0 ];
 then
     eval "/usr/bin/notify-send 'Low battery' '$BATTINFO'"
